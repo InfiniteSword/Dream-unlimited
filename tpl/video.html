@@ -1,0 +1,76 @@
+<{include file="header.html"}>
+<link rel="stylesheet" href="<{$__RESOURCE}>/css/video.css">
+<title><{$prow.video_name}></title>
+</head>
+
+<body>
+	<header id="my-header">
+		<{include file="navbar.html"}>
+	</header>
+
+	<!-- main -->
+	<div class="my-content">
+
+		<!-- 视频信息 -->
+		<div class="row">
+			<div class="col-md-10">
+				<p class="lead"><{$prow.channel}></p>
+				<span class="person-name"><{$prow.author}></span><span>发布于</span><span class="time"><{$prow.addtime|date_format:"%Y-%m-%d %H:%M:%S"}></span>
+			</div>
+			<div class="col-md-2">
+				<a href="#">收藏</a>
+				<a href="#">评论</a>
+			</div>
+		</div>
+
+		<!-- 播放器 -->
+		<div class="video">
+			<video src="../public/video/[FLsnow][Fate_stay_night][01][BDrip][720p][AVC_AAC].mp4" class="my-video" controls="controls">
+				您的浏览器不支持 video 标签。
+			</video>
+			
+			<input type="text" class="my-input" placeholder=" 此处填装弹幕">
+			<button type="submit" class="btn shoot">发射！</button>
+		</div>
+
+		<!-- 标签 -->
+		<div class="video-tag">
+			<p><span> 标签：</span><a href="#"> hhhh </a></p>
+			<hr>
+			<p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
+		</div>
+
+		<hr>
+
+		<!-- 评论区 -->
+		<div>
+			<p>说两句呗~o(*￣▽￣*)ブ</p>
+			<form class="say-form">
+				<textarea class="form-control" rows="4" name="message"></textarea>
+				<button type="submit" class="btn btn-primary"> 发表评论 </button>
+			</form>
+
+
+
+			<h6>评论区</h6>
+			<hr>
+			<div class="panel panel-default">
+
+		  	<div class="panel-body">
+	   			<span class="badge badge-info">1</span>
+	    		<a href="">月落丶音阑</a>
+	    		<span class="time">2015-02-22 22:11:43</span>
+	    		<span><a class="btn-quote">[回复]</a></span>
+		    	<div class="comment-content">
+		    		<p>沙发~~~~~</p>
+		    	</div>
+		  	</div>
+
+			</div>
+		</div>
+	
+	<{include file="footer.html"}>
+
+	</div>
+</body>
+</html>

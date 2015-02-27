@@ -1,0 +1,112 @@
+<{include file="header.html"}>
+<title><{$conf.sitename}></title>
+</head>
+
+<body>
+  <div id="particleground"></div>
+  <header id="my-header">
+    <{include file="navbar.html"}>
+    <!-- swap -->
+    <div id="Top" class="container my-swap">
+      <ul>
+        <{foreach from=$swap item=bfa name=foo}> <{$i = $swap|@count}>
+        <{if $smarty.foreach.foo.iteration < $i}>
+        <li>
+          <div id="my-swap<{$bfa.id}>" class="text-center">
+        <{if $bfa.status == 0}>
+          <div class="jumbotron">
+            <h1><{$bfa.title}></h1>
+            <{$bfa.description}>
+          </div>
+        <{elseif $bfa.status == 1}>
+          <img src="<{$__RESOURCE}>/<{$bfa.thumb}>" alt="<{$bfa.description}>">
+        <{else}>
+          <{section name=ator loop=$swap}><{if $swap[ator].status == 2}>
+          <div class="col-md-6">
+            <a href="<{$swap[ator].url}>"><img src="<{$__RESOURCE}>/<{$swap[ator].thumb}>" alt="<{$swap[ator].info}>" class="img-circle"></a>
+            <p><a href="<{$swap[ator].url}>"><{$swap[ator].info}></a></p>
+          </div> <{$i = $i - 1}>
+          <{/if}><{/section}>
+        <{/if}>
+          </div>
+        </li>
+        <{/if}>
+        <{/foreach}>
+      </ul>
+    </div>
+  </header>
+  
+
+  <!-- notice -->
+  <{foreach from=$notice item=bfn}>
+  <div id="my-notice">
+    <div id="notice-button" class="text-center"><{$bfn.title}></div>
+    <div id="notice-content">
+      <p class="text-center"><{$bfn.content}></p>
+    </div>
+  </div>
+  <{/foreach}>
+
+  <!-- main -->
+  <section id="Video">
+  <{foreach from=$cate item=bfv name=video}>
+    <!-- <{$bfv.name}> -->
+    <div id="my-<{$bfv.name}>" class="my-list">
+      <div class="dark"></div>
+    </div>
+    <{foreach from=$prod item=bfp}>
+    <{if $bfp.channel eq $bfv.name}>
+    <div id="<{$bfv.name}>-content" class="my-content">
+      <div class="row video-pic-box">
+
+        <div class="video-pic">
+        <a href="<{spUrl c=main a=prod id=$bfp.id}>" class="thumbnail">
+          <img src="<{$__RESOURCE}>/<{$bfp.thumb}>" data-src="holder.js/100%x180" alt="<{$bfp.video_name}>">
+          <img class="pic-hover" src="<{$__RESOURCE}>/img/icon/play.png" alt="playing">
+          <span><{$bfp.video_name}></span>
+        </a>
+        </div>
+
+        <div class="video-pic">
+        <a href="<{spUrl c=main a=prod id=$bfp.id}>" class="thumbnail">
+          <img src="<{$__RESOURCE}>/<{$bfp.thumb}>" data-src="holder.js/100%x180" alt="<{$bfp.video_name}>">
+          <img class="pic-hover" src="<{$__RESOURCE}>/img/icon/play.png" alt="playing">
+          <span><{$bfp.video_name}></span>
+        </a>
+        </div>
+        
+        <div class="video-pic">
+        <a href="<{spUrl c=main a=prod id=$bfp.id}>" class="thumbnail">
+          <img src="<{$__RESOURCE}>/<{$bfp.thumb}>" data-src="holder.js/100%x180" alt="<{$bfp.video_name}>">
+          <img class="pic-hover" src="<{$__RESOURCE}>/img/icon/play.png" alt="playing">
+          <span><{$bfp.video_name}></span>
+        </a>
+        </div>
+
+      </div>
+
+
+    </div>
+    <{/if}>
+    <{/foreach}>
+  <{/foreach}>
+  </section><!-- 循环输出视频views量最高的前几个，固定下宽度好让div能够自动换行 -->
+  
+  <{include file="footer.html"}>
+
+<script>
+  $('.my-swap').slider({
+    fluid: true,
+    dots: true,
+  });
+  $('.my-swap').css('width', '100%');
+</script>
+
+<script>
+  $('body').scrollspy({
+    target: '.my-navbar'
+  });
+</script>
+
+</body>
+</html>
